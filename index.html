@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Temperature Converter</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
-
 <body>
   <div class="converter">
     <h1>Temperature Converter</h1>
@@ -18,14 +17,26 @@
     <h3 id="result"></h3>
   </div>
 
-  <div class="thermometer">
-    <div class="slider-container">
-      <input type="range" min="-40" max="100" value="0" id="slider" oninput="updateTemperature()">
-    </div>
+  <div class="slider-container">
+    <div id="slider"></div>
     <p id="sliderValue">0°C</p>
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
+    $(function() {
+      $("#slider").slider({
+        orientation: "vertical",
+        min: -40,
+        max: 100,
+        value: 0,
+        slide: function(event, ui) {
+          $("#sliderValue").text(ui.value + "°C");
+        }
+      });
+    });
+
     function celsiusToFahrenheit() {
       var celsiusInput = document.getElementById("celsius").value;
       var fahrenheit = (celsiusInput * 9 / 5) + 32;
@@ -37,13 +48,7 @@
       var celsius = (fahrenheitInput - 32) * 5 / 9;
       document.getElementById("result").innerText = fahrenheitInput + "°F is " + celsius + "°C";
     }
-
-    function updateTemperature() {
-      var sliderValue = document.getElementById("slider").value;
-      document.getElementById("sliderValue").innerText = sliderValue + "°C";
-    }
   </script>
 </body>
-
 </html>
 
