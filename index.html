@@ -34,8 +34,6 @@
   </div>
 
   <div class="slider-container">
-    <!-- Fahrenheit label -->
-    <div class="fahrenheit-label">F</div>
     <div id="slider"></div>
     <p id="sliderValue">0°C</p>
     <p id="fahrenheitValue">32°F</p>
@@ -48,7 +46,7 @@
       $("#slider").slider({
         orientation: "vertical",
         min: -40,
-        max: 212,
+        max: 240,
         value: 0,
         step: 1, // Added step value to synchronize the slider with ticks
         slide: function(event, ui) {
@@ -74,3 +72,4 @@
   </script>
 </body>
 </html>
+
