@@ -34,6 +34,8 @@
   </div>
 
   <div class="slider-container">
+    <!-- Fahrenheit label -->
+    <div class="fahrenheit-label">F</div>
     <div id="slider"></div>
     <p id="sliderValue">0°C</p>
   </div>
@@ -49,6 +51,9 @@
         value: 0,
         slide: function(event, ui) {
           $("#sliderValue").text(ui.value + "°C");
+          // Calculate Fahrenheit value and update the element
+          var fahrenheit = (ui.value * 9 / 5) + 32;
+          $("#fahrenheitValue").text(fahrenheit + "°F");
         }
       });
     });
