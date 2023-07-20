@@ -38,6 +38,7 @@
     <div class="fahrenheit-label">F</div>
     <div id="slider"></div>
     <p id="sliderValue">0°C</p>
+    <p id="fahrenheitValue">32°F</p>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -47,8 +48,9 @@
       $("#slider").slider({
         orientation: "vertical",
         min: -40,
-        max: 100,
+        max: 212,
         value: 0,
+        step: 1, // Added step value to synchronize the slider with ticks
         slide: function(event, ui) {
           $("#sliderValue").text(ui.value + "°C");
           // Calculate Fahrenheit value and update the element
